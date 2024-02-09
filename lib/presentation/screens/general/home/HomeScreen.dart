@@ -1,7 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:technomart_project/data/local/enum/Status.dart';
 import 'package:technomart_project/data/source/model/top_products/top_products.dart';
 import 'package:technomart_project/presentation/screens/all_categories_screen/all_categories_screen.dart';
@@ -35,10 +38,11 @@ class _HomeScreenState extends State<HomeScreen> {
         listener: (context, state) {},
         builder: (context, state) {
           if (state.status == Status.Loading) {
-            return const Scaffold(
+            return Scaffold(
               backgroundColor: Colors.white,
               body: Center(
-                child: CircularProgressIndicator(
+                child: LoadingAnimationWidget.inkDrop(
+                  size: 50,
                   color: Colors.amber,
                 ),
               ),
@@ -76,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w600,
-                            fontSize: 22),
+                            fontSize: 20),
                       ),
                     ),
                     Container(
@@ -89,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             crossAxisCount: 2,
                             crossAxisSpacing: 10,
                             mainAxisSpacing: 10,
-                            childAspectRatio: 0.7,
+                            childAspectRatio: 0.6,
                           ),
                           itemCount: state.topProductsModel?.data?.data.length,
                           shrinkWrap: true,
@@ -98,26 +102,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                 state.topProductsModel?.data?.data[index];
                             var size = MediaQuery.of(context).size.width;
                             return InkWell(
+                              overlayColor: MaterialStatePropertyAll(Colors.amberAccent),
                               onTap: () {
-                                final transformedData = StringBuffer();
-                                final data = state.topProductsModel?.data?.data;
-                                transformedData.write("${data?[index].name}#");
-                                transformedData.write("${data?[index].image}#");
-                                transformedData
-                                    .write("${data?[index].allCount ?? 0}#");
-                                transformedData
-                                    .write("${data?[index].salePrice ?? 0}#");
-                                transformedData
-                                    .write("${data?[index].oldPrice ?? 0}#");
-                                transformedData.write(
-                                    "${data?[index].axiomMonthlyPrice ?? ""}#");
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => DetailScreen(
-                                              allData:
-                                                  transformedData.toString(),
-                                            )));
+                                final data =
+                                    state.topProductsModel?.data?.data[index];
+                                pushNewScreen(
+                                  context,
+                                  screen:  DetailScreen(
+                                    id: data?.id,
+                                  ),
+                                  withNavBar: true,
+                                  pageTransitionAnimation: PageTransitionAnimation.cupertino,
+                                );
+
                               },
                               child: buildTopItems(data),
                             );
@@ -152,8 +149,17 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             child: Align(
                 alignment: Alignment.center,
-                child: Image.network(data?.image ?? ""))),
-        Container(
+                child: CachedNetworkImage(
+                    imageUrl: data?.image ?? "",
+                    progressIndicatorBuilder:
+                        (context, url, downloadProgress) =>
+                            LinearProgressIndicator(
+                              value: downloadProgress.progress,
+                              color: Colors.amberAccent,
+                            ))
+            )
+        ),
+        SizedBox(
           width: 140,
           child: Text(data?.name ?? "",
               overflow: TextOverflow.ellipsis,
@@ -216,8 +222,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Text(data?.axiomMonthlyPrice.toString() ?? "",
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.start,
-                style:
-                    const TextStyle(fontWeight: FontWeight.w400, fontSize: 9)),
+                style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 9)),
           ),
         ),
         SizedBox(
@@ -257,7 +262,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
+                            color: Colors.grey.withOpacity(0.1),
                             spreadRadius: 5,
                             blurRadius: 7,
                             offset: Offset(0, 3),
@@ -312,14 +317,16 @@ class _HomeScreenState extends State<HomeScreen> {
         const Text(
           "Kategoriyalar",
           style: TextStyle(
-              color: Colors.black, fontWeight: FontWeight.w600, fontSize: 22),
+              color: Colors.black, fontWeight: FontWeight.w600, fontSize: 20),
         ),
         InkWell(
           onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const AllCategoriesScreen()));
+            pushNewScreen(
+              context,
+              screen: const AllCategoriesScreen(),
+              withNavBar: true,
+              pageTransitionAnimation: PageTransitionAnimation.cupertino,
+            );
           },
           child: const Row(
             children: [
@@ -346,7 +353,7 @@ class _HomeScreenState extends State<HomeScreen> {
         return Container(
           width: double.infinity,
           height: 200,
-          margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
+          margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 5),
           child: ClipRRect(
             borderRadius: const BorderRadius.all(Radius.circular(15)),
             child: Image.network(

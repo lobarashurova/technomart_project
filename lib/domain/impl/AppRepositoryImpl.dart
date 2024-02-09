@@ -1,7 +1,9 @@
 import 'package:technomart_project/data/local/hive/box/product_database.dart';
 import 'package:technomart_project/data/local/hive/model/product_model_hive.dart';
+import 'package:technomart_project/data/source/model/product_data/product_model_by_id.dart';
 import 'package:technomart_project/data/source/model/products_by_slug/products_by_slug.dart';
 import 'package:technomart_project/data/source/model/slider/slider_model.dart';
+import 'package:technomart_project/data/source/model/stores/stores_model.dart';
 import 'package:technomart_project/data/source/model/top_categories/top_categories.dart';
 import 'package:technomart_project/data/source/model/top_products/top_products.dart';
 import 'package:technomart_project/data/source/remote/api/api_service.dart';
@@ -67,7 +69,7 @@ class AppRepositoryImpl extends AppRepository {
       if (value.name == productModelHive.name) {
         productBox.putAt(value.key, productModelHive);
         print("Product updated!");
-        isExist=true;
+        isExist = true;
         return;
       }
     }
@@ -82,7 +84,7 @@ class AppRepositoryImpl extends AppRepository {
     var isExist = false;
     for (var value in productBox.values.toList()) {
       if (value.name == productName) {
-        isExist=value.isBasket;
+        isExist = value.isBasket;
       }
     }
     return isExist;
@@ -93,9 +95,29 @@ class AppRepositoryImpl extends AppRepository {
     var isExist = false;
     for (var value in productBox.values.toList()) {
       if (value.name == productName) {
-        isExist=value.isFavourite;
+        isExist = value.isFavourite;
       }
     }
     return isExist;
+  }
+
+  @override
+  Future<AllStoresModel> getAllStoresData() async {
+    final response = await _api.getAllStoriesList();
+    return response;
+  }
+
+  @override
+  Future<ProductModelById> getProductsById(int id) async {
+    final response = await _api.getProductDataById(id: id);
+    return response;
+  }
+
+  @override
+  List<ProductModelHive> getProductsInFavourite() {
+    return productBox.values
+        .toList()
+        .where((element) => element.isFavourite)
+        .toList();
   }
 }

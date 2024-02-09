@@ -9,8 +9,14 @@ class UpdateProducts extends DetailScreenEvent {
   UpdateProducts(this.productModelHive);
 }
 
-class CheckItem extends DetailScreenEvent{
+class CheckItem extends DetailScreenEvent {
   String productName;
 
   CheckItem(this.productName);
+}
+
+class LoadProductData extends DetailScreenEvent {
+  int id;
+
+  LoadProductData(this.id);
 }

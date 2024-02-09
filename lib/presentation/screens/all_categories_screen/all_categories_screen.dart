@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:technomart_project/presentation/screens/all_categories_screen/bloc/all_categories_bloc.dart';
 import 'package:technomart_project/presentation/screens/products/products_screen.dart';
 
@@ -29,11 +30,11 @@ class _AllCategoriesScreenState extends State<AllCategoriesScreen> {
       child: BlocBuilder<AllCategoriesBloc, AllCategoriesState>(
         builder: (context, state) {
           if (state.status == Status.Loading) {
-            return const Scaffold(
+            return  Scaffold(
               body: Center(
-                  child: CircularProgressIndicator(
-                color: Colors.amber,
-              )),
+                  child:LoadingAnimationWidget.inkDrop(
+                size: 50, color: Colors.amber),
+              ),
             );
           } else if (state.status == Status.Success) {
             return Scaffold(

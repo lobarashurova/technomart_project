@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:technomart_project/presentation/screens/general/GeneralScreen.dart';
 
+import '../../../data/source/model/product_data/product_model_by_id.dart';
 import '../general/home/HomeScreen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,6 +16,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    final data1=MainCharacterElement("", "");
+    final data2=MainCharacterElement("", "");
+    print("equality:${data1 == data2}");
     Future.delayed(const Duration(milliseconds: 2000), () async {
       Navigator.pushReplacement(
         context,
@@ -25,6 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
         backgroundColor: Colors.amberAccent,
         body: Stack(children: [

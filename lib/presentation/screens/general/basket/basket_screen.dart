@@ -30,6 +30,7 @@ class _BasketScreenState extends State<BasketScreen> {
       value: bloc,
       child: BlocBuilder<BasketScreenBloc, BasketScreenState>(
         builder: (context, state) {
+          bloc.add(LoadAllData());
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.amberAccent,

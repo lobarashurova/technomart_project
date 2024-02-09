@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:technomart_project/data/local/enum/Status.dart';
 import 'package:technomart_project/presentation/screens/detail/detail_screen.dart';
 import 'package:technomart_project/presentation/screens/products/bloc/products_screen_bloc.dart';
@@ -79,11 +81,11 @@ class _ProductsScreenState extends State<ProductsScreen> {
                       ).toList(),
                     ),
                   ),
-                  const Align(
+                   Align(
                     alignment: Alignment.center,
-                    child: CircularProgressIndicator(
-                      color: Colors.amber,
-                    ),
+                    child:  LoadingAnimationWidget.inkDrop(
+                    size: 50, color: Colors.amber,
+                  ),
                   )
                 ]));
           } else if (state.status == Status.Success) {
@@ -132,7 +134,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                             crossAxisCount: 2,
                             crossAxisSpacing: 10,
                             mainAxisSpacing: 10,
-                            childAspectRatio: 0.7,
+                                childAspectRatio: 0.6
                           ),
                           itemCount:
                               state.productsBySlug?.data?.products?.length ?? 0,
@@ -143,27 +145,13 @@ class _ProductsScreenState extends State<ProductsScreen> {
                             bloc.add(CheckProduct(item?.name ?? ""));
                             return InkWell(
                                 onTap: () {
-                                  final transformedData = StringBuffer();
                                   final data =
                                       state.productsBySlug?.data?.products;
-                                  transformedData
-                                      .write("${data?[index].name}#");
-                                  transformedData
-                                      .write("${data?[index].image}#");
-                                  transformedData
-                                      .write("${data?[index].allCount}#");
-                                  transformedData
-                                      .write("${data?[index].loanPrice}#");
-                                  transformedData
-                                      .write("${data?[index].fLoanPrice}#");
-                                  transformedData.write(
-                                      "${data?[index].axiomMonthlyPrice}#");
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => DetailScreen(
-                                                allData:
-                                                    transformedData.toString(),
+                                                id: data?[index].id ?? 0,
                                               )));
                                 },
                                 child: Column(
@@ -178,8 +166,11 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                         ),
                                         child: Align(
                                             alignment: Alignment.center,
-                                            child: Image.network(
-                                                item?.image ?? ""))),
+                                            child:
+                                            CachedNetworkImage(
+                                               imageUrl: item?.image ?? "",
+                                                progressIndicatorBuilder: (context, url, downloadProgress) =>
+                                                    CircularProgressIndicator(value: downloadProgress.progress, color: Colors.amberAccent,)))),
                                     Container(
                                       width: 140,
                                       child: Text(item?.name ?? "",

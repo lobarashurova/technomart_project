@@ -46,6 +46,20 @@ dependencies:
   provider: ^6.1.1
   flutter_styled_toast: ^2.2.1
   google_fonts: ^6.1.0
+  loading_animation_widget: ^1.2.0+4
+  permission_handler: ^8.0.0+2
+  geolocator: ^10.1.0
+  yandex_mapkit: ^3.4.0
+  flutter_sticky_header: ^0.6.5
+  group_list_view: ^1.1.1
+  simple_grouped_listview: ^2.0.0
+  flutter_widget_from_html: ^0.14.11
+  expandable: ^5.0.1
+  cached_network_image: ^3.3.1
+  equatable: ^2.0.5
+  persistent_bottom_nav_bar_v2: ^4.2.8
+  grouped_list: ^5.1.2
+  readmore: ^2.2.0
 
 
 

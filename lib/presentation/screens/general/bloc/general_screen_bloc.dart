@@ -12,8 +12,8 @@ class GeneralScreenBloc extends Bloc<GeneralScreenEvent, GeneralScreenState> {
     final repository = getIt<AppRepository>();
     on<UpdateSize>((event, emit) {
       var size = repository.getProductsInBasket().length;
-      print("size:$size");
-      emit(state.copy(size));
+      var favSize = repository.getFavouritesList().length;
+      emit(state.copy(size, favSize));
     });
   }
 }
