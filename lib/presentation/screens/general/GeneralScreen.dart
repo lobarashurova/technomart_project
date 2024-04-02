@@ -23,7 +23,7 @@ class _GeneralScreenState extends State<GeneralScreen> {
       const AllCategoriesScreen(),
       const BasketScreen(),
       const FavouriteScreen(),
-      const ProfileTab()
+      // const ProfileTab()
     ];
   }
 
@@ -91,12 +91,12 @@ class _GeneralScreenState extends State<GeneralScreen> {
                 activeColorPrimary: CupertinoColors.black,
                 inactiveColorPrimary: CupertinoColors.systemGrey,
               ),
-              PersistentBottomNavBarItem(
-                icon: const Icon(CupertinoIcons.person),
-                title: "Profil",
-                activeColorPrimary: CupertinoColors.black,
-                inactiveColorPrimary: CupertinoColors.systemGrey,
-              ),
+              // PersistentBottomNavBarItem(
+              //   icon: const Icon(CupertinoIcons.person),
+              //   title: "Profil",
+              //   activeColorPrimary: CupertinoColors.black,
+              //   inactiveColorPrimary: CupertinoColors.systemGrey,
+              // ),
             ],
             confineInSafeArea: true,
             backgroundColor: Colors.white,

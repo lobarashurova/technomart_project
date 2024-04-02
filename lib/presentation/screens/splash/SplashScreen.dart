@@ -48,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 const Padding(
                   padding: EdgeInsets.only(top: 15),
                   child: Text(
-                    "Technomart",
+                    "Tech Shop",
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 22,
