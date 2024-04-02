@@ -56,11 +56,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 8, horizontal: 10),
-                      child: buildExpandableCarousel(state),
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(
+                    //       vertical: 8, horizontal: 10),
+                    //   child: buildExpandableCarousel(state),
+                    // ),
+                    SizedBox(height: 30,),
                     Padding(
                       padding: EdgeInsets.only(left: 15),
                       child: buildTopCategories(context),
@@ -382,7 +383,7 @@ class _HomeScreenState extends State<HomeScreen> {
               bottomLeft: Radius.circular(15),
               bottomRight: Radius.circular(15))),
       title: const Text(
-        "texnomart*",
+        "Tech Shop",
         style: TextStyle(
             fontWeight: FontWeight.bold, color: Colors.black, fontSize: 22),
       ),

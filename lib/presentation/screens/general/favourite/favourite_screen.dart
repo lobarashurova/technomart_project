@@ -54,7 +54,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                           crossAxisCount: 2,
                           crossAxisSpacing: 10,
                           mainAxisSpacing: 10,
-                          childAspectRatio: 0.6,
+                          childAspectRatio: 0.5,
                         ),
                         itemCount: state.list?.length ?? 0,
                         shrinkWrap: true,
@@ -103,129 +103,125 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
               ),
             ),
           ),
-          Column(
-            children: [
-              SizedBox(
-                width: 140,
-                child: Text(state.list?[index].name ?? "",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                    textAlign: TextAlign.start,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w400, fontSize: 11)),
-              ),
-              Container(
-                alignment: Alignment.centerLeft,
-                margin: EdgeInsets.only(bottom: 10),
-                width: 140,
-                child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: 15,
-                      height: 15,
-                      child: Icon(
-                        Icons.star,
-                        color: Colors.grey,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 15,
-                      height: 15,
-                      child: Icon(
-                        Icons.star,
-                        color: Colors.grey,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 15,
-                      height: 15,
-                      child: Icon(
-                        Icons.star,
-                        color: Colors.grey,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 15,
-                      height: 15,
-                      child: Icon(
-                        Icons.star,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                width: 140,
-                margin: EdgeInsets.symmetric(vertical: 5),
-                decoration: BoxDecoration(
-                    color: const Color(0x15000000),
-                    borderRadius: BorderRadius.circular(10)),
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      top: 2.0, left: 5.0, bottom: 2.0, right: 3),
-                  child: Text(state.list?[index]?.monthlyCost.toString() ?? "",
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.start,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w400, fontSize: 9)),
-                ),
-              ),
-              SizedBox(
-                width: 140,
-                child: Text("${state.list?[index].costProduct} so'm",
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.start,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w700, fontSize: 14)),
-              ),
-              Row(
-                children: [
-                  IconButton(
-                      onPressed: () {
-                        setState(() {
-                          state.list![index].isFavourite =
-                              !state.list![index].isFavourite;
-                          bloc.add(UpdateData(ProductModelHive(
-                              state.list![index].name,
-                              state.list![index].image,
-                              state.list![index].isFavourite,
-                              state.list![index].isBasket,
-                              state.list![index].costProduct,
-                              state.list![index].monthlyCost,
-                              state.list![index].countInBasket)));
-                        });
-                      },
-                      icon: state.list![index].isFavourite
-                          ? const Icon(
-                              Icons.favorite,
-                              color: Colors.red,
-                            )
-                          : const Icon(Icons.favorite_border)),
-                  const Spacer(
-                    flex: 1,
+          SizedBox(
+            width: 140,
+            child: Text(state.list?[index].name ?? "",
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+                textAlign: TextAlign.start,
+                style:
+                    const TextStyle(fontWeight: FontWeight.w400, fontSize: 11)),
+          ),
+          Container(
+            alignment: Alignment.centerLeft,
+            margin: EdgeInsets.only(bottom: 10),
+            width: 140,
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 15,
+                  height: 15,
+                  child: Icon(
+                    Icons.star,
+                    color: Colors.grey,
                   ),
-                  IconButton(
-                      onPressed: () {
-                        setState(() {
-                          state.list![index].isBasket =
-                              !state.list![index].isBasket;
-                        });
-                        bloc.add(UpdateData(ProductModelHive(
-                            state.list![index].name,
-                            state.list![index].image,
-                            state.list![index].isFavourite,
-                            state.list![index].isBasket,
-                            state.list![index].costProduct,
-                            state.list![index].monthlyCost,
-                            state.list![index].countInBasket)));
-                      },
-                      icon: state.list![index].isBasket
-                          ? const Icon(Icons.shopping_cart)
-                          : const Icon(Icons.shopping_cart_outlined))
-                ],
-              )
+                ),
+                SizedBox(
+                  width: 15,
+                  height: 15,
+                  child: Icon(
+                    Icons.star,
+                    color: Colors.grey,
+                  ),
+                ),
+                SizedBox(
+                  width: 15,
+                  height: 15,
+                  child: Icon(
+                    Icons.star,
+                    color: Colors.grey,
+                  ),
+                ),
+                SizedBox(
+                  width: 15,
+                  height: 15,
+                  child: Icon(
+                    Icons.star,
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            width: 140,
+            margin: EdgeInsets.symmetric(vertical: 5),
+            decoration: BoxDecoration(
+                color: const Color(0x15000000),
+                borderRadius: BorderRadius.circular(10)),
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  top: 2.0, left: 5.0, bottom: 2.0, right: 3),
+              child: Text(state.list?[index]?.monthlyCost.toString() ?? "",
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.start,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w400, fontSize: 9)),
+            ),
+          ),
+          SizedBox(
+            width: 140,
+            child: Text("${state.list?[index].costProduct} so'm",
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.start,
+                style:
+                    const TextStyle(fontWeight: FontWeight.w700, fontSize: 14)),
+          ),
+          Row(
+            children: [
+              IconButton(
+                  onPressed: () {
+                    setState(() {
+                      state.list![index].isFavourite =
+                          !state.list![index].isFavourite;
+                      bloc.add(UpdateData(ProductModelHive(
+                          state.list![index].name,
+                          state.list![index].image,
+                          state.list![index].isFavourite,
+                          state.list![index].isBasket,
+                          state.list![index].costProduct,
+                          state.list![index].monthlyCost,
+                          state.list![index].countInBasket)));
+                    });
+                  },
+                  icon: state.list![index].isFavourite
+                      ? const Icon(
+                          Icons.favorite,
+                          color: Colors.red,
+                        )
+                      : const Icon(Icons.favorite_border)),
+              const Spacer(
+                flex: 1,
+              ),
+              IconButton(
+                  onPressed: () {
+                    setState(() {
+                      state.list![index].isBasket =
+                          !state.list![index].isBasket;
+                    });
+                    bloc.add(UpdateData(ProductModelHive(
+                        state.list![index].name,
+                        state.list![index].image,
+                        state.list![index].isFavourite,
+                        state.list![index].isBasket,
+                        state.list![index].costProduct,
+                        state.list![index].monthlyCost,
+                        state.list![index].countInBasket)));
+                  },
+                  icon: state.list![index].isBasket
+                      ? const Icon(Icons.shopping_cart)
+                      : const Icon(Icons.shopping_cart_outlined))
             ],
           ),
         ],

@@ -137,50 +137,50 @@ class _DetailScreenState extends State<DetailScreen> {
                           ),
                           Column(
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 12),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 8, right: 8, top: 8),
-                                      child: Text(
-                                        "Sharhlar",
-                                        style: GoogleFonts.nunitoSans(
-                                            fontSize: 18,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                    ),
-                                    const Padding(
-                                      padding: EdgeInsets.only(left: 10),
-                                      child: Row(
-                                        children: [
-                                          Icon(
-                                            Icons.star,
-                                            color: Colors.black12,
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Colors.black12,
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Colors.black12,
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Colors.black12,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
+                              // Padding(
+                              //   padding: const EdgeInsets.symmetric(
+                              //       horizontal: 10, vertical: 12),
+                              //   child: Row(
+                              //     mainAxisAlignment:
+                              //         MainAxisAlignment.spaceBetween,
+                              //     children: [
+                              //       // Padding(
+                              //       //   padding: const EdgeInsets.only(
+                              //       //       left: 8, right: 8, top: 8),
+                              //       //   child: Text(
+                              //       //     "Sharhlar",
+                              //       //     style: GoogleFonts.nunitoSans(
+                              //       //         fontSize: 18,
+                              //       //         color: Colors.black,
+                              //       //         fontWeight: FontWeight.w500),
+                              //       //   ),
+                              //       // ),
+                              //       const Padding(
+                              //         padding: EdgeInsets.only(left: 10),
+                              //         child: Row(
+                              //           children: [
+                              //             Icon(
+                              //               Icons.star,
+                              //               color: Colors.black12,
+                              //             ),
+                              //             Icon(
+                              //               Icons.star,
+                              //               color: Colors.black12,
+                              //             ),
+                              //             Icon(
+                              //               Icons.star,
+                              //               color: Colors.black12,
+                              //             ),
+                              //             Icon(
+                              //               Icons.star,
+                              //               color: Colors.black12,
+                              //             ),
+                              //           ],
+                              //         ),
+                              //       ),
+                              //     ],
+                              //   ),
+                              // ),
                               InkWell(
                                 overlayColor: MaterialStatePropertyAll(Colors.amberAccent),
 
