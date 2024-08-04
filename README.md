@@ -1,19 +1,20 @@
-Technomart Clone App
+<h1>Technomart Clone App</h1>
 
-This is a clone of the Technomart app, developed to demonstrate proficiency in various modern mobile development technologies. The app replicates the core functionalities of an e-commerce platform, providing users with a seamless and intuitive shopping experience.
-Key Features:
+<p>This is a clone of the Technomart app, developed to demonstrate proficiency in various modern mobile development technologies. The app replicates the core functionalities of an e-commerce platform, providing users with a seamless and intuitive shopping experience.</p>
 
-    BottomSheetNavigation: Implements a smooth and user-friendly navigation experience within the app.
-    Retrofit: Utilizes Retrofit for efficient and robust network operations, ensuring reliable communication with backend services.
-    YandexMap: Integrates YandexMap for providing detailed and interactive maps to enhance user experience.
-    Bloc: Employs the Bloc pattern for state management, ensuring a clean and maintainable codebase.
-    Hive: Uses Hive for local data storage, offering a lightweight and fast database solution.
+<h2>Key Features</h2>
+<ul>
+  <li><strong>BottomSheetNavigation</strong>: Implements a smooth and user-friendly navigation experience within the app.</li>
+  <li><strong>Retrofit</strong>: Utilizes Retrofit for efficient and robust network operations, ensuring reliable communication with backend services.</li>
+  <li><strong>YandexMap</strong>: Integrates YandexMap for providing detailed and interactive maps to enhance user experience.</li>
+  <li><strong>Bloc</strong>: Employs the Bloc pattern for state management, ensuring a clean and maintainable codebase.</li>
+  <li><strong>Hive</strong>: Uses Hive for local data storage, offering a lightweight and fast database solution.</li>
+</ul>
 
-Overview:
+<h2>Overview</h2>
+<p>The Technomart clone app showcases a comprehensive approach to mobile app development, incorporating several powerful libraries and frameworks. By leveraging BottomSheetNavigation, Retrofit, YandexMap, Bloc, and Hive, this app delivers a high-quality user experience while maintaining efficient performance and scalability.</p>
 
-The Technomart clone app showcases a comprehensive approach to mobile app development, incorporating several powerful libraries and frameworks. By leveraging BottomSheetNavigation, Retrofit, YandexMap, Bloc, and Hive, this app delivers a high-quality user experience while maintaining efficient performance and scalability.
-
-Feel free to explore the code and see how these technologies are implemented to create a functional and feature-rich e-commerce application.
+<p>Feel free to explore the code and see how these technologies are implemented to create a functional and feature-rich e-commerce application.</p>
 
 ![photo_2024-01-21_16-39-49](https://github.com/user-attachments/assets/91238c26-6e90-4027-aa42-2d4ebbadc65e)
 ![photo_2024-01-21_01-57-16](https://github.com/user-attachments/assets/d7bc4729-992b-4893-85f9-1febfb1a3852)
